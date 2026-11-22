@@ -4,7 +4,7 @@
 #include "fitur.h"
 
 // ---------- helper input ---------- 
-static void baca_string(const char *prompt, char *buf, int ukuran) {
+static void baca_string (const char *prompt, char *buf, int ukuran) {
     printf("%s", prompt);
     if (fgets(buf, ukuran, stdin) == NULL) { buf[0] = '\0'; return; }
 
@@ -16,7 +16,7 @@ static void baca_string(const char *prompt, char *buf, int ukuran) {
         buf[strcspn(buf, "\n")] = '\0';
     }
 }
-static float baca_float(const char *prompt) {
+static float baca_float (const char *prompt) {
     char baris[64];
     float x = 0;
     do {
@@ -26,7 +26,7 @@ static float baca_float(const char *prompt) {
 }
 
 // ---------- konversi nilai ---------- 
-float nilai_ke_bobot(float nilai) {
+float nilai_ke_bobot (float nilai) {
     if (nilai >= 85) return 4.0f;
     if (nilai >= 75) return 3.0f;
     if (nilai >= 65) return 2.0f;
@@ -34,7 +34,7 @@ float nilai_ke_bobot(float nilai) {
     return 0.0f;
 }
 
-const char *nilai_ke_huruf(float nilai) {
+const char *nilai_ke_huruf (float nilai) {
     if (nilai >= 85) return "A";
     if (nilai >= 75) return "B";
     if (nilai >= 65) return "C";
@@ -43,7 +43,7 @@ const char *nilai_ke_huruf(float nilai) {
 }
 
 //---------- manipulasi struct via pointer ----------
-void hitung_ipk(Mahasiswa *m) {
+void hitung_ipk (Mahasiswa *m) {
     float total_mutu = 0;
     int total_sks = 0;
     for (int i = 0; i < m->jumlah_mk; i++) {
@@ -53,7 +53,7 @@ void hitung_ipk(Mahasiswa *m) {
     m->ipk = (total_sks > 0) ? total_mutu / total_sks : 0.0f;
 }
 
-void input_mahasiswa(Mahasiswa *m) {
+void input_mahasiswa (Mahasiswa *m) {
     memset(m, 0, sizeof(*m));
     baca_string("NIM           : ", m->nim, PANJANG_NIM);
     baca_string("Nama          : ", m->nama, PANJANG_TEKS);
@@ -75,7 +75,7 @@ void input_mahasiswa(Mahasiswa *m) {
 }
 
 //---------- tampilan ----------
-void tampilkan_mahasiswa(Mahasiswa m) {
+void tampilkan_mahasiswa (Mahasiswa m) {
     printf("\nNIM   : %s\nNama  : %s\nProdi : %s\n", m.nim, m.nama, m.prodi);
     printf("%-3s %-25s %-4s %-6s %-5s\n", "No", "Mata Kuliah", "SKS", "Nilai", "Huruf");
     for (int i = 0; i < m.jumlah_mk; i++) {
@@ -85,20 +85,20 @@ void tampilkan_mahasiswa(Mahasiswa m) {
     printf("IPK   : %.2f\n", m.ipk);
 }
 
-void tampilkan_semua(const Mahasiswa data[], int n) {
+void tampilkan_semua (const Mahasiswa data[], int n) {
     if (n == 0) { printf("Belum ada data.\n"); return; }
     printf("\n%-3s %-15s %-25s %-5s\n", "No", "NIM", "Nama", "IPK");
     for (int i = 0; i < n; i++)
         printf("%-3d %-15s %-25s %.2f\n", i + 1, data[i].nim, data[i].nama, data[i].ipk);
 }
 
-int cari_nim(const Mahasiswa data[], int n, const char *nim) {
+int cari_nim (const Mahasiswa data[], int n, const char *nim) {
     for (int i = 0; i < n; i++)
         if (strcmp(data[i].nim, nim) == 0) return i;
     return -1;
 }
 
-void tampilkan_bantuan(const char *prog) {
+void tampilkan_bantuan (const char *prog) {
     printf("Penggunaan:\n");
     printf("  %s                    gunakan database default (data/data_mhs.bin)\n", prog);
     printf("  %s <file_database>    gunakan file database tertentu\n", prog);
@@ -106,7 +106,7 @@ void tampilkan_bantuan(const char *prog) {
 }
 
 //---------- file handling ------------
-int muat_database(const char *file, Mahasiswa data[]) {
+int muat_database (const char *file, Mahasiswa data[]) {
     FILE *fp = fopen(file, "rb");
     if (fp == NULL) return 0;               // file belum ada: mulai kosong 
     int n = 0;
@@ -119,16 +119,16 @@ int muat_database(const char *file, Mahasiswa data[]) {
     return terbaca;
 }
 
-int simpan_database(const char *file, const Mahasiswa data[], int n) {
+int simpan_database (const char *file, const Mahasiswa data[], int n) {
     FILE *fp = fopen(file, "wb");
-    if (fp == NULL) return 0;
+    if(fp == NULL) return 0;
     fwrite(&n, sizeof(int), 1, fp);
     fwrite(data, sizeof(Mahasiswa), n, fp);
     fclose(fp);
     return 1;
 }
 
-int ekspor_khs(const Mahasiswa *m) {
+int ekspor_khs (const Mahasiswa *m) {
     char path[128];
     snprintf(path, sizeof(path), "data/KHS_%s.txt", m->nim);
     FILE *fp = fopen(path, "w");
