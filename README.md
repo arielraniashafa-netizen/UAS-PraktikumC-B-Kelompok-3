@@ -23,3 +23,10 @@ gcc src/main.c src/fitur.c -Iinclude -o program
 ```
 
 ## Menjalankan
+```
+./program                  # database default data/data_mhs.bin
+./program data_mhs.bin     # pilih file database
+```
+
+## Screenshot
+<img width="1060" height="800" alt="Screenshot 2026-11-22 151306" src="https://github.com/user-attachments/assets/052f6316-4002-49cd-942d-121b7c85da73" />
