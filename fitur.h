@@ -22,3 +22,24 @@ typedef struct {
     int        jumlah_mk;
     float      ipk;
 } Mahasiswa;
+
+// Konversi nilai (pass by value)
+float       nilai_ke_bobot(float nilai);
+const char *nilai_ke_huruf(float nilai);
+
+// Manipulasi struct (pass by pointer)
+void hitung_ipk(Mahasiswa *m);
+void input_mahasiswa(Mahasiswa *m);
+
+// Tampilan 
+void tampilkan_mahasiswa(Mahasiswa m);                  // pass by value
+void tampilkan_semua(const Mahasiswa data[], int n);
+int  cari_nim(const Mahasiswa data[], int n, const char *nim);
+void tampilkan_bantuan(const char *prog);
+
+// File handling
+int muat_database(const char *file, Mahasiswa data[]);                 // binary, fread  
+int simpan_database(const char *file, const Mahasiswa data[], int n);  // binary, fwrite 
+int ekspor_khs(const Mahasiswa *m);                                    // teks, fprintf 
+
+#endif
