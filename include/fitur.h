@@ -1,4 +1,4 @@
-#define data_h
+#ifndef FITUR_H
 #define FITUR_H
 
 #define MAKS_MHS     90
