@@ -26,6 +26,7 @@ gcc src/main.c src/fitur.c -Iinclude -o program
 ```
 ./program                  # database default data/data_mhs.bin
 ./program data_mhs.bin     # pilih file database
+./program --help           # bantuan
 ```
 
 ## Screenshot
