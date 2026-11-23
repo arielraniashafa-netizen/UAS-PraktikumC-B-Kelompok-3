@@ -40,6 +40,6 @@ void tampilkan_bantuan(const char *prog);
 // File handling
 int muat_database(const char *file, Mahasiswa data[]);                 // binary, fread  
 int simpan_database(const char *file, const Mahasiswa data[], int n);  // binary, fwrite 
-int ekspor_khs(const Mahasiswa *m);                                    // teks, fprintf 
+int ekspor_khs(const Mahasiswa *m);                                    // text,printf
 
 #endif
