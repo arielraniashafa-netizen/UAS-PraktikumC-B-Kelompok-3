@@ -1,12 +1,7 @@
 # Sistem Akademik & KHS Mahasiswa
 
 ## Anggota
-- Nama / NIM:
-- Salwa hayatul fitri / 260810701100036
-- Ariel Rania Shafa / 260810701100014
-- Chalif Aulya / 260810701100077
-- Derizki Aditya / 260810701100095
-- Muhammad Hanif Baihaqi / 260810701100047
+isi nama anggota
 
 ## Fitur
 - Tambah data mahasiswa beserta mata kuliah, IPK dihitung otomatis
